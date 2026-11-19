@@ -1,11 +1,8 @@
 import numpy as np
 
-# สมมติว่า current_samples คือ list ของค่าที่อ่านได้จาก SCT-013 (860 ค่า)
-current_samples = [...]  # ตัวอย่าง: [0.5, -0.3, 0.8, -0.6, ...]
-
 def calculate_rms(samples):
+    """Calculate AC RMS after removing the mean (DC offset)."""
     data = np.array(samples)      # แปลง list เป็น numpy array
-# ลบ DC Offset ก่อนคำนวณ RMS
     dc_offset = np.mean(data)
     data = data - dc_offset
     squared = data ** 2            # ขั้น 2: ยกกำลังสองทุกตัว
@@ -13,5 +10,8 @@ def calculate_rms(samples):
     rms = np.sqrt(mean_val)        # ขั้น 4: ถอดราก
     return rms
 
-rms_current = calculate_rms(current_samples)
-print(f"RMS Current: {rms_current:.4f} A")
+
+if __name__ == '__main__':
+    current_samples = [1.0, 3.0, 1.0, 3.0]  # Example current samples in amperes.
+    rms_current = calculate_rms(current_samples)
+    print(f"AC RMS current: {rms_current:.4f} A")

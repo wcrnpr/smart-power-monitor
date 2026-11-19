@@ -12,7 +12,7 @@ This repo documents both the **learning process** (Python → ML → TinyML) and
 ## Tech Stack
 
 - **Hardware:** ESP32 (Arduino/C++), ADS1115 (16-bit ADC, up to 860 SPS), SCT-013-000 (current sensor), ZMPT101B (voltage sensor)
-- **Signal processing:** RMS power calculation, FFT-based feature extraction
+- **Signal processing:** AC RMS current calculation, FFT-based feature extraction
 - **ML/TinyML:** scikit-learn → TensorFlow/Keras → TensorFlow Lite Micro (quantized for on-device inference)
 - **Storage/Display:** SD card logging, I2C OLED status display
 
@@ -25,9 +25,19 @@ smart-power-monitor/
 └── ml_models/     — Trained models and TFLite Micro conversion
 ```
 
+## Run the AC RMS example
+
+With the Python dependencies listed in `requirements.txt` available, run this from the repository root.
+
+```sh
+python notebooks/rms_calculation.py
+```
+
+The example removes the DC offset and prints `AC RMS current: 1.0000 A`.
+
 ## Roadmap
 
-- [x] RMS power calculation from raw current samples (NumPy)
+- [x] AC RMS current calculation from samples in amperes (NumPy)
 - [ ] FFT-based feature extraction
 - [ ] Baseline classifier (scikit-learn: Random Forest / SVM)
 - [ ] Neural network classifier (TensorFlow/Keras)
