@@ -1,0 +1,17 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+
+# PlatformIO build artifacts
+.pio/
+
+# Local secrets
+.env
+.env.local
+.env.*.local
+secrets.local.*
+
+# Generated datasets (keep the directory README and small examples trackable)
+/data/generated/
