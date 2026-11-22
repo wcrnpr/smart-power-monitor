@@ -2,12 +2,12 @@ import numpy as np
 
 def calculate_rms(samples):
     """Calculate AC RMS after removing the mean (DC offset)."""
-    data = np.array(samples)      # แปลง list เป็น numpy array
+    data = np.array(samples)      # Convert the sample list to a NumPy array.
     dc_offset = np.mean(data)
     data = data - dc_offset
-    squared = data ** 2            # ขั้น 2: ยกกำลังสองทุกตัว
-    mean_val = np.mean(squared)    # ขั้น 3: หาค่าเฉลี่ยทั้งชุด
-    rms = np.sqrt(mean_val)        # ขั้น 4: ถอดราก
+    squared = data ** 2            # Square each mean-centered sample.
+    mean_val = np.mean(squared)    # Calculate the mean of the squared samples.
+    rms = np.sqrt(mean_val)        # Take the square root of the mean.
     return rms
 
 
